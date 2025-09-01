@@ -3,67 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEYROB - Import & Export Solutions</title>
+    <title>GoDaddy DNS Setup Guide for GitHub Pages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        header { background-color: #1b3b5f; color: white; padding: 20px; text-align: center; }
-        nav { background: #13304a; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .hero { background: url('https://images.unsplash.com/photo-1581091870630-fca5b1f6a54f') center/cover no-repeat; color: white; height: 300px; display: flex; justify-content: center; align-items: center; font-size: 2em; font-weight: bold; text-shadow: 2px 2px 4px black; }
-        .section { padding: 40px; max-width: 900px; margin: auto; }
-        h2 { color: #1b3b5f; }
-        footer { background: #1b3b5f; color: white; text-align: center; padding: 15px; margin-top: 20px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; }
-        .contact-form button { background: #1b3b5f; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 5px; }
-        .contact-form button:hover { background: #13304a; }
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #ff5722;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --success: #0f9d58;
+            --warning: #f4b400;
+            --gray: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .card-header {
+            background: linear-gradient(120deg, var(--accent), var(--primary));
+            color: white;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background: var(--accent);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .record-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .record-table th {
+            background: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 15px;
+        }
+        
+        .record-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .record-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .record-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .note {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+        }
+        
+        .warning {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+            margin: 20px 0;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card-header {
+                font-size: 1.3rem;
+                padding: 15px;
+            }
+            
+            .record-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .step-number {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            min-width: 200px;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>GoDaddy DNS Setup Guide</h1>
+            <p class="subtitle">Step-by-step instructions for connecting your GoDaddy domain to GitHub Pages</p>
+        </div>
+    </header>
 
-<header>
-    <h1>JEYROB</h1>
-    <p>Connecting Quality with Markets Worldwide</p>
-</header>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-server"></i> DNS Records Explained
+            </div>
+            <div class="card-body">
+                <p>When setting up DNS records on GoDaddy, you need to understand what each field means:</p>
+                
+                <table class="record-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Purpose</th>
+                            <th>Example Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Type</strong></td>
+                            <td>Specifies the kind of DNS record</td>
+                            <td>A, CNAME, MX, TXT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td>The hostname or domain name</td>
+                            <td>@, www, mail</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Value</strong></td>
+                            <td>The destination address or value</td>
+                            <td>IP address or domain name</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TTL</strong></td>
+                            <td>Time to Live - how long DNS servers should cache the record</td>
+                            <td>1 hour, 30 minutes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="note">
+                    <p><strong>Note:</strong> For GitHub Pages, you'll primarily use A records for the root domain (@) and a CNAME record for the www subdomain.</p>
+                </div>
+            </div>
+        </div>
 
-<nav>
-    <a href="#about">About Us</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-</nav>
+        <div class="card">
+            <div class="card-header">
+                <i class="fab fa-github"></i> GitHub Pages DNS Configuration
+            </div>
+            <div class="card-body">
+                <p>To connect your GoDaddy domain to GitHub Pages, you need to create the following DNS records:</p>
+                
+                <table class="record-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Value</th>
+                            <th>TTL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>@</td>
+                            <td>185.199.108.153</td>
+                            <td>1 hour</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>@</td>
+                            <td>185.199.109.153</td>
+                            <td>1 hour</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>@</td>
+                            <td>185.199.110.153</td>
+                            <td>1 hour</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>@</td>
+                            <td>185.199.111.153</td>
+                            <td>1 hour</td>
+                        </tr>
+                        <tr>
+                            <td>CNAME</td>
+                            <td>www</td>
+                            <td>yourusername.github.io</td>
+                            <td>1 hour</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="warning">
+                    <p><strong>Important:</strong> Replace "yourusername" with your actual GitHub username in the CNAME record value.</p>
+                </div>
+            </div>
+        </div>
 
-<div class="hero">
-    Import & Export Solutions
-</div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-list-ol"></i> Step-by-Step Guide for GoDaddy
+            </div>
+            <div class="card-body">
+                <div class="card-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Log in to your GoDaddy account</div>
+                        <p>Go to <a href="https://godaddy.com" target="_blank">godaddy.com</a> and sign in to your account.</p>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Access your DNS management page</div>
+                        <p>Navigate to your Domain Portfolio and click on the domain you want to manage (jeyrob.com). Then click on the "DNS" button to manage your DNS records.</p>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Delete existing A records</div>
+                        <p>Remove any existing A records for your domain to avoid conflicts.</p>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Add new A records</div>
+                        <p>Click "Add" to create new records. For each of the four GitHub IP addresses, create an A record with:</p>
+                        <ul>
+                            <li><strong>Type:</strong> A</li>
+                            <li><strong>Name:</strong> @</li>
+                            <li><strong>Value:</strong> One of the four GitHub IP addresses (185.199.108.153, 185.199.109.153, etc.)</li>
+                            <li><strong>TTL:</strong> 1 hour</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Add a CNAME record for www</div>
+                        <p>Create a CNAME record with:</p>
+                        <ul>
+                            <li><strong>Type:</strong> CNAME</li>
+                            <li><strong>Name:</strong> www</li>
+                            <li><strong>Value:</strong> yourusername.github.io (replace with your GitHub username)</li>
+                            <li><strong>TTL:</strong> 1 hour</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <div class="step-title">Save your changes</div>
+                        <p>Click "Save" to apply your DNS changes. It may take up to 48 hours for DNS changes to propagate globally.</p>
+                    </div>
+                </div>
+                
+                <div class="card-step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <div class="step-title">Configure GitHub Pages</div>
+                        <p>In your GitHub repository settings, go to the Pages section and add your custom domain (jeyrob.com). Check the "Enforce HTTPS" option once it becomes available.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section id="about" class="section">
-    <h2>About Us</h2>
-    <p>JEYROB is a trusted international trade company specializing in sourcing, importing, and distributing high-quality products. We bridge the gap between manufacturers and markets, ensuring timely delivery and competitive prices.</p>
-</section>
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>For assistance with your jeyrob.com website</p>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>sales@jeyrob.com</p>
+                    <a href="mailto:sales@jeyrob.com" class="btn">Send Email</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>(780) 953-9528</p>
+                    <a href="tel:7809539528" class="btn">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<section id="products" class="section">
-    <h2>Products & Services</h2>
-    <ul>
-        <li>Brake shoes & auto parts</li>
-        <li>Import & export logistics</li>
-        <li>Bulk wholesale orders</li>
-        <li>Custom product sourcing</li>
-    </ul>
-</section>
+    <footer>
+        <div class="container">
+            <p>© 2023 jeyrob.com | GoDaddy DNS Configuration Guide</p>
+        </div>
+    </footer>
 
-<section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
-
-<footer>
-    <p>&copy; 2025 JEYROB. All Rights Reserved.</p>
-</footer>
-
+    <script>
+        // Simple animation for step numbers
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepNumbers = document.querySelectorAll('.step-number');
+            
+            function animateSteps() {
+                stepNumbers.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.style.opacity = '1';
+                        step.style.transform = 'scale(1)';
+                    }, index * 200);
+                });
+            }
+            
+            // Initialize styles
+            stepNumbers.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'scale(0.5)';
+                step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger animation
+            setTimeout(animateSteps, 500);
+        });
+    </script>
 </body>
 </html>
