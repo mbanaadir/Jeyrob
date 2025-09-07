@@ -1,496 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoDaddy DNS Setup Guide for GitHub Pages</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a73e8;
-            --secondary: #0d47a1;
-            --accent: #ff5722;
-            --light: #f8f9fa;
-            --dark: #202124;
-            --success: #0f9d58;
-            --warning: #f4b400;
-            --gray: #5f6368;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(120deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-        }
-        
-        .card-header {
-            background: linear-gradient(120deg, var(--accent), var(--primary));
-            color: white;
-            padding: 20px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .card-body {
-            padding: 25px;
-        }
-        
-        .card-step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .step-number {
-            background: var(--accent);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
-            font-size: 1.1rem;
-        }
-        
-        .step-content {
-            flex: 1;
-        }
-        
-        .step-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-        
-        .record-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .record-table th {
-            background: var(--primary);
-            color: white;
-            text-align: left;
-            padding: 15px;
-        }
-        
-        .record-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .record-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        .record-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .note {
-            background: #e7f3ff;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            margin: 20px 0;
-        }
-        
-        .warning {
-            background: #fff8e1;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--warning);
-            margin: 20px 0;
-        }
-        
-        .screenshot {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(120deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(26, 115, 232, 0.4);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-            color: var(--dark);
-            opacity: 0.8;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .card-header {
-                font-size: 1.3rem;
-                padding: 15px;
-            }
-            
-            .record-table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            .step-number {
-                width: 32px;
-                height: 32px;
-            }
-        }
-
-        .contact-info {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f8f9fa;
-            min-width: 200px;
-        }
-        
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JeyRob Distribution Ltd. - Premium Brake Shoes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #0d47a1;
+      --accent: #e63946;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--dark); background: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+    .header-top { background: var(--primary); color: white; padding: 8px 0; font-size: 14px; }
+    .header-top-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .contact-info a, .social-icons a { color: white; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+    .social-icons a { font-size: 16px; }
+    .header-main { padding: 15px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .logo { font-size: 28px; font-weight: bold; color: var(--primary); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; list-style: none; gap: 25px; flex-wrap: wrap; }
+    nav ul li a { color: var(--dark); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    nav ul li a:hover { color: var(--primary); }
+    .nav-btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: background 0.3s; }
+    .nav-btn:hover { background: var(--secondary); }
+    
+    /* Breadcrumb */
+    .breadcrumb { padding: 15px 0; background-color: #ececec; margin-bottom: 30px; }
+    .breadcrumb-content { display: flex; list-style: none; gap: 10px; font-size: 14px; }
+    .breadcrumb-content li:not(:last-child)::after { content: ">"; margin-left: 10px; color: #777; }
+    .breadcrumb-content a { color: var(--primary); text-decoration: none; }
+    .breadcrumb-content a:hover { text-decoration: underline; }
+    
+    /* Category Content */
+    .category-content { display: flex; gap: 30px; margin: 40px 0; }
+    
+    /* Sidebar */
+    .sidebar { width: 250px; flex-shrink: 0; }
+    .filter-widget { background-color: white; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-bottom: 20px; padding: 20px; }
+    .filter-title { font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; color: var(--dark); }
+    .filter-list { list-style: none; }
+    .filter-list li { margin-bottom: 10px; }
+    .filter-list a { color: #555; text-decoration: none; display: flex; justify-content: space-between; }
+    .filter-list a:hover { color: var(--primary); }
+    .filter-list .count { color: #999; font-size: 12px; }
+    
+    /* Products Section */
+    .products-section { flex-grow: 1; }
+    .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background-color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+    .products-count { font-size: 14px; color: #666; }
+    .sort-options select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; background: white; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+    
+    /* Product Card */
+    .product-card { background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .product-img { height: 200px; overflow: hidden; }
+    .product-img img { width: 100%; height: 100%; object-fit: contain; padding: 15px; transition: transform 0.3s ease; }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+    .product-content { padding: 20px; }
+    .product-content .product-code { color: var(--primary); font-weight: 600; }
+    .product-content h3 { margin: 10px 0; font-size: 1.1rem; color: var(--dark); }
+    .product-content p { font-size: 1rem; color: var(--accent); margin-bottom: 15px; }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease-in-out; }
+    .btn-primary { background: var(--primary); color: white; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--secondary); transform: translateY(-2px); }
+    
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; margin-top: 40px; }
+    .pagination-list { display: flex; list-style: none; gap: 10px; }
+    .pagination-list a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #ddd; border-radius: 4px; color: #333; text-decoration: none; transition: all 0.3s; }
+    .pagination-list a:hover, .pagination-list a.active { background-color: var(--primary); color: white; border-color: var(--primary); }
+    
+    /* Footer */
+    footer { background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px; }
+    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h3 { font-size: 20px; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background: var(--primary); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: white; }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #444; color: #ccc; }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-container { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 768px) {
+      .category-content { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .header-top-container, .header-main { flex-direction: column; gap: 15px; } 
+      nav ul { flex-direction: column; gap: 10px; text-align: center; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 576px) {
+      .footer-container { grid-template-columns: 1fr; }
+      .products-header { flex-direction: column; gap: 15px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>GoDaddy DNS Setup Guide</h1>
-            <p class="subtitle">Step-by-step instructions for connecting your GoDaddy domain to GitHub Pages</p>
-        </div>
-    </header>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-server"></i> DNS Records Explained
-            </div>
-            <div class="card-body">
-                <p>When setting up DNS records on GoDaddy, you need to understand what each field means:</p>
-                
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Purpose</th>
-                            <th>Example Values</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Type</strong></td>
-                            <td>Specifies the kind of DNS record</td>
-                            <td>A, CNAME, MX, TXT</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Name</strong></td>
-                            <td>The hostname or domain name</td>
-                            <td>@, www, mail</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Value</strong></td>
-                            <td>The destination address or value</td>
-                            <td>IP address or domain name</td>
-                        </tr>
-                        <tr>
-                            <td><strong>TTL</strong></td>
-                            <td>Time to Live - how long DNS servers should cache the record</td>
-                            <td>1 hour, 30 minutes</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="note">
-                    <p><strong>Note:</strong> For GitHub Pages, you'll primarily use A records for the root domain (@) and a CNAME record for the www subdomain.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <i class="fab fa-github"></i> GitHub Pages DNS Configuration
-            </div>
-            <div class="card-body">
-                <p>To connect your GoDaddy domain to GitHub Pages, you need to create the following DNS records:</p>
-                
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Value</th>
-                            <th>TTL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A</td>
-                            <td>@</td>
-                            <td>185.199.108.153</td>
-                            <td>1 hour</td>
-                        </tr>
-                        <tr>
-                            <td>A</td>
-                            <td>@</td>
-                            <td>185.199.109.153</td>
-                            <td>1 hour</td>
-                        </tr>
-                        <tr>
-                            <td>A</td>
-                            <td>@</td>
-                            <td>185.199.110.153</td>
-                            <td>1 hour</td>
-                        </tr>
-                        <tr>
-                            <td>A</td>
-                            <td>@</td>
-                            <td>185.199.111.153</td>
-                            <td>1 hour</td>
-                        </tr>
-                        <tr>
-                            <td>CNAME</td>
-                            <td>www</td>
-                            <td>yourusername.github.io</td>
-                            <td>1 hour</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="warning">
-                    <p><strong>Important:</strong> Replace "yourusername" with your actual GitHub username in the CNAME record value.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-list-ol"></i> Step-by-Step Guide for GoDaddy
-            </div>
-            <div class="card-body">
-                <div class="card-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <div class="step-title">Log in to your GoDaddy account</div>
-                        <p>Go to <a href="https://godaddy.com" target="_blank">godaddy.com</a> and sign in to your account.</p>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <div class="step-title">Access your DNS management page</div>
-                        <p>Navigate to your Domain Portfolio and click on the domain you want to manage (jeyrob.com). Then click on the "DNS" button to manage your DNS records.</p>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <div class="step-title">Delete existing A records</div>
-                        <p>Remove any existing A records for your domain to avoid conflicts.</p>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <div class="step-title">Add new A records</div>
-                        <p>Click "Add" to create new records. For each of the four GitHub IP addresses, create an A record with:</p>
-                        <ul>
-                            <li><strong>Type:</strong> A</li>
-                            <li><strong>Name:</strong> @</li>
-                            <li><strong>Value:</strong> One of the four GitHub IP addresses (185.199.108.153, 185.199.109.153, etc.)</li>
-                            <li><strong>TTL:</strong> 1 hour</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <div class="step-title">Add a CNAME record for www</div>
-                        <p>Create a CNAME record with:</p>
-                        <ul>
-                            <li><strong>Type:</strong> CNAME</li>
-                            <li><strong>Name:</strong> www</li>
-                            <li><strong>Value:</strong> yourusername.github.io (replace with your GitHub username)</li>
-                            <li><strong>TTL:</strong> 1 hour</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">6</div>
-                    <div class="step-content">
-                        <div class="step-title">Save your changes</div>
-                        <p>Click "Save" to apply your DNS changes. It may take up to 48 hours for DNS changes to propagate globally.</p>
-                    </div>
-                </div>
-                
-                <div class="card-step">
-                    <div class="step-number">7</div>
-                    <div class="step-content">
-                        <div class="step-title">Configure GitHub Pages</div>
-                        <p>In your GitHub repository settings, go to the Pages section and add your custom domain (jeyrob.com). Check the "Enforce HTTPS" option once it becomes available.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-info">
-            <h2>Contact Information</h2>
-            <p>For assistance with your jeyrob.com website</p>
-            
-            <div class="contact-details">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>sales@jeyrob.com</p>
-                    <a href="mailto:sales@jeyrob.com" class="btn">Send Email</a>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Phone</h3>
-                    <p>(780) 953-9528</p>
-                    <a href="tel:7809539528" class="btn">Call Now</a>
-                </div>
-            </div>
-        </div>
+  <!-- Header -->
+  <div class="header-top">
+    <div class="container header-top-container">
+      <div class="contact-info">
+        <a href="mailto:sales@jeyrob.com"><i class="fas fa-envelope"></i> sales@jeyrob.com</a>
+        <a href="tel:7809539528"><i class="fas fa-phone"></i> (780) 953‑9528</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
+  </div>
+  <header>
+    <div class="container header-main">
+      <a href="#" class="logo">Jey<span>Rob</span> Distribution</a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#partners">For Manufacturers</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="nav-btn">Get a Quote</a>
+    </div>
+  </header>
 
-    <footer>
-        <div class="container">
-            <p>© 2023 jeyrob.com | GoDaddy DNS Configuration Guide</p>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-content">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li>Brake Shoes</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1 style="font-size: 32px; margin-bottom: 20px; color: var(--dark);">Brake Shoes</h1>
+    
+    <div class="category-content">
+      <!-- Sidebar with filters -->
+      <aside class="sidebar">
+        <div class="filter-widget">
+          <h3 class="filter-title">Categories</h3>
+          <ul class="filter-list">
+            <li><a href="#">All Brake Shoes <span class="count">(24)</span></a></li>
+            <li><a href="#">Heavy Duty Brake Shoes <span class="count">(12)</span></a></li>
+            <li><a href="#">Medium Duty Brake Shoes <span class="count">(8)</span></a></li>
+            <li><a href="#">Light Duty Brake Shoes <span class="count">(4)</span></a></li>
+          </ul>
         </div>
-    </footer>
+        
+        <div class="filter-widget">
+          <h3 class="filter-title">Filter by Vehicle</h3>
+          <ul class="filter-list">
+            <li><a href="#">Freightliner <span class="count">(8)</span></a></li>
+            <li><a href="#">Peterbilt <span class="count">(7)</span></a></li>
+            <li><a href="#">Kenworth <span class="count">(6)</span></a></li>
+            <li><a href="#">Volvo <span class="count">(5)</span></a></li>
+            <li><a href="#">International <span class="count">(4)</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="filter-widget">
+          <h3 class="filter-title">Price Filter</h3>
+          <div style="padding: 10px 0;">
+            <input type="range" min="0" max="1000" style="width: 100%;">
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+              <span>$0</span>
+              <span>$1000</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Products Section -->
+      <section class="products-section">
+        <div class="products-header">
+          <p class="products-count">Showing 1-12 of 24 products</p>
+          <div class="sort-options">
+            <select>
+              <option>Default Sorting</option>
+              <option>Sort by popularity</option>
+              <option>Sort by price: low to high</option>
+              <option>Sort by price: high to low</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://i.ebayimg.com/images/g/EXYAAOSw~3VkzjX5/s-l1600.jpg" alt="Brake Shoe WK4311E">
+            </div>
+            <div class="product-content">
+              <span class="product-code">WK4311E</span>
+              <h3>Heavy-Duty Brake Shoe</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://i.ebayimg.com/images/g/kN4AAOSwKfZk0RUv/s-l1600.jpg" alt="Brake Shoe 4709ES2">
+            </div>
+            <div class="product-content">
+              <span class="product-code">4709ES2</span>
+              <h3>Performance Brake Shoe</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://i.ebayimg.com/images/g/2jkAAOSw5vZk0r1W/s-l1600.jpg" alt="Brake Shoe 4707Q">
+            </div>
+            <div class="product-content">
+              <span class="product-code">4707Q</span>
+              <h3>Commercial Brake Shoe</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://i.ebayimg.com/images/g/7eAAAOSwB9Fk0Q4X/s-l1600.jpg" alt="Brake Shoe 4515Q-23KW">
+            </div>
+            <div class="product-content">
+              <span class="product-code">4515Q-23KW</span>
+              <h3>Premium Brake Shoe</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+          
+          <!-- Product 5 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://via.placeholder.com/300x200?text=Brake+Shoe" alt="Heavy Duty Brake Shoe">
+            </div>
+            <div class="product-content">
+              <span class="product-code">HDBS-5000</span>
+              <h3>Heavy Duty Truck Brake Shoe Set</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+          
+          <!-- Product 6 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://via.placeholder.com/300x200?text=Brake+Shoe" alt="Premium Brake Shoe">
+            </div>
+            <div class="product-content">
+              <span class="product-code">PBS-7000</span>
+              <h3>Premium Long-Life Brake Shoe</h3>
+              <p>Contact for Pricing</p>
+              <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <ul class="pagination-list">
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>JeyRob Distribution Ltd.</h3>
+          <p>Canada's trusted distributor of premium brake shoes from top Turkish manufacturers.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#partners">For Manufacturers</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="#products">WK4311E</a></li>
+            <li><a href="#products">4709ES2</a></li>
+            <li><a href="#products">4707Q</a></li>
+            <li><a href="#products">4515Q-23KW</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta, Canada</li>
+            <li><i class="fas fa-phone"></i> (780) 953-9528</li>
+            <li><i class="fas fa-envelope"></i> sales@jeyrob.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 JeyRob Distribution Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        // Simple animation for step numbers
-        document.addEventListener('DOMContentLoaded', function() {
-            const stepNumbers = document.querySelectorAll('.step-number');
-            
-            function animateSteps() {
-                stepNumbers.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.style.opacity = '1';
-                        step.style.transform = 'scale(1)';
-                    }, index * 200);
-                });
-            }
-            
-            // Initialize styles
-            stepNumbers.forEach(step => {
-                step.style.opacity = '0';
-                step.style.transform = 'scale(0.5)';
-                step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Trigger animation
-            setTimeout(animateSteps, 500);
-        });
-    </script>
 </body>
 </html>
