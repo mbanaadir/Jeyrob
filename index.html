@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,35 +30,32 @@
     nav ul li a:hover { color: var(--primary); }
     .nav-btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: background 0.3s; }
     .nav-btn:hover { background: var(--secondary); }
-    
-    /* Breadcrumb */
-    .breadcrumb { padding: 15px 0; background-color: #ececec; margin-bottom: 30px; }
-    .breadcrumb-content { display: flex; list-style: none; gap: 10px; font-size: 14px; }
-    .breadcrumb-content li:not(:last-child)::after { content: ">"; margin-left: 10px; color: #777; }
-    .breadcrumb-content a { color: var(--primary); text-decoration: none; }
-    .breadcrumb-content a:hover { text-decoration: underline; }
-    
-    /* Category Content */
-    .category-content { display: flex; gap: 30px; margin: 40px 0; }
-    
-    /* Sidebar */
-    .sidebar { width: 250px; flex-shrink: 0; }
-    .filter-widget { background-color: white; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-bottom: 20px; padding: 20px; }
-    .filter-title { font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; color: var(--dark); }
-    .filter-list { list-style: none; }
-    .filter-list li { margin-bottom: 10px; }
-    .filter-list a { color: #555; text-decoration: none; display: flex; justify-content: space-between; }
-    .filter-list a:hover { color: var(--primary); }
-    .filter-list .count { color: #999; font-size: 12px; }
-    
-    /* Products Section */
-    .products-section { flex-grow: 1; }
-    .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background-color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
-    .products-count { font-size: 14px; color: #666; }
-    .sort-options select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; background: white; }
+
+    /* Hero */
+    .hero {
+      background: url("https://via.placeholder.com/1600x500?text=Premium+Brake+Shoes") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 { font-size: 42px; margin-bottom: 20px; }
+    .hero p { font-size: 18px; margin-bottom: 30px; }
+    .hero .btn { background: var(--accent); }
+
+    /* Products */
+    .products-section { margin: 60px 0; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-    
-    /* Product Card */
     .product-card { background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
     .product-img { height: 200px; overflow: hidden; }
@@ -71,13 +68,18 @@
     .btn { display: inline-block; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease-in-out; }
     .btn-primary { background: var(--primary); color: white; border: none; cursor: pointer; }
     .btn-primary:hover { background: var(--secondary); transform: translateY(-2px); }
-    
-    /* Pagination */
-    .pagination { display: flex; justify-content: center; margin-top: 40px; }
-    .pagination-list { display: flex; list-style: none; gap: 10px; }
-    .pagination-list a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #ddd; border-radius: 4px; color: #333; text-decoration: none; transition: all 0.3s; }
-    .pagination-list a:hover, .pagination-list a.active { background-color: var(--primary); color: white; border-color: var(--primary); }
-    
+
+    /* Sections */
+    section { margin: 60px 0; }
+    section h2 { font-size: 28px; margin-bottom: 20px; color: var(--dark); }
+
+    /* Contact Form */
+    .contact-form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;
+    }
+    .contact-form button { width: 100%; }
+
     /* Footer */
     footer { background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px; }
     .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 40px; margin-bottom: 40px; }
@@ -88,24 +90,11 @@
     .footer-col ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
     .footer-col ul li a:hover { color: white; }
     .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #444; color: #ccc; }
-    
+
     /* Responsive */
-    @media (max-width: 992px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-container { grid-template-columns: repeat(2, 1fr); }
-    }
-    
     @media (max-width: 768px) {
-      .category-content { flex-direction: column; }
-      .sidebar { width: 100%; }
-      .header-top-container, .header-main { flex-direction: column; gap: 15px; } 
-      nav ul { flex-direction: column; gap: 10px; text-align: center; }
       .products-grid { grid-template-columns: 1fr; }
-    }
-    
-    @media (max-width: 576px) {
-      .footer-container { grid-template-columns: 1fr; }
-      .products-header { flex-direction: column; gap: 15px; }
+      .header-main, nav ul { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -116,7 +105,7 @@
     <div class="container header-top-container">
       <div class="contact-info">
         <a href="mailto:sales@jeyrob.com"><i class="fas fa-envelope"></i> sales@jeyrob.com</a>
-        <a href="tel:7809539528"><i class="fas fa-phone"></i> (780) 953‑9528</a>
+        <a href="tel:7809539528"><i class="fas fa-phone"></i> (780) 953-9528</a>
       </div>
       <div class="social-icons">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -128,7 +117,7 @@
   </div>
   <header>
     <div class="container header-main">
-      <a href="#" class="logo">Jey<span>Rob</span> Distribution</a>
+      <a href="#home" class="logo">Jey<span>Rob</span> Distribution</a>
       <nav aria-label="Main Navigation">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -142,170 +131,91 @@
     </div>
   </header>
 
-  <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <div class="container">
-      <ul class="breadcrumb-content">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li>Brake Shoes</li>
-      </ul>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Premium Brake Shoes</h1>
+      <p>Supplying Canada with high-quality, heavy-duty brake shoes from trusted manufacturers</p>
+      <a href="#products" class="btn">Explore Products</a>
     </div>
-  </div>
+  </section>
 
-  <!-- Main Content -->
-  <main class="container">
-    <h1 style="font-size: 32px; margin-bottom: 20px; color: var(--dark);">Brake Shoes</h1>
-    
-    <div class="category-content">
-      <!-- Sidebar with filters -->
-      <aside class="sidebar">
-        <div class="filter-widget">
-          <h3 class="filter-title">Categories</h3>
-          <ul class="filter-list">
-            <li><a href="#">All Brake Shoes <span class="count">(24)</span></a></li>
-            <li><a href="#">Heavy Duty Brake Shoes <span class="count">(12)</span></a></li>
-            <li><a href="#">Medium Duty Brake Shoes <span class="count">(8)</span></a></li>
-            <li><a href="#">Light Duty Brake Shoes <span class="count">(4)</span></a></li>
-          </ul>
+  <!-- Products -->
+  <section id="products" class="container products-section">
+    <h2>Our Brake Shoes</h2>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/300x200?text=WK4311E" alt="Brake Shoe WK4311E">
         </div>
-        
-        <div class="filter-widget">
-          <h3 class="filter-title">Filter by Vehicle</h3>
-          <ul class="filter-list">
-            <li><a href="#">Freightliner <span class="count">(8)</span></a></li>
-            <li><a href="#">Peterbilt <span class="count">(7)</span></a></li>
-            <li><a href="#">Kenworth <span class="count">(6)</span></a></li>
-            <li><a href="#">Volvo <span class="count">(5)</span></a></li>
-            <li><a href="#">International <span class="count">(4)</span></a></li>
-          </ul>
+        <div class="product-content">
+          <span class="product-code">WK4311E</span>
+          <h3>Heavy-Duty Brake Shoe</h3>
+          <p>Contact for Pricing</p>
+          <a href="#contact" class="btn btn-primary">Get a Quote</a>
         </div>
-        
-        <div class="filter-widget">
-          <h3 class="filter-title">Price Filter</h3>
-          <div style="padding: 10px 0;">
-            <input type="range" min="0" max="1000" style="width: 100%;">
-            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-              <span>$0</span>
-              <span>$1000</span>
-            </div>
-          </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/300x200?text=4709ES2" alt="Brake Shoe 4709ES2">
         </div>
-      </aside>
-      
-      <!-- Products Section -->
-      <section class="products-section">
-        <div class="products-header">
-          <p class="products-count">Showing 1-12 of 24 products</p>
-          <div class="sort-options">
-            <select>
-              <option>Default Sorting</option>
-              <option>Sort by popularity</option>
-              <option>Sort by price: low to high</option>
-              <option>Sort by price: high to low</option>
-            </select>
-          </div>
+        <div class="product-content">
+          <span class="product-code">4709ES2</span>
+          <h3>Performance Brake Shoe</h3>
+          <p>Contact for Pricing</p>
+          <a href="#contact" class="btn btn-primary">Get a Quote</a>
         </div>
-        
-        <div class="products-grid">
-          <!-- Product 1 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://i.ebayimg.com/images/g/EXYAAOSw~3VkzjX5/s-l1600.jpg" alt="Brake Shoe WK4311E">
-            </div>
-            <div class="product-content">
-              <span class="product-code">WK4311E</span>
-              <h3>Heavy-Duty Brake Shoe</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
-          
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://i.ebayimg.com/images/g/kN4AAOSwKfZk0RUv/s-l1600.jpg" alt="Brake Shoe 4709ES2">
-            </div>
-            <div class="product-content">
-              <span class="product-code">4709ES2</span>
-              <h3>Performance Brake Shoe</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
-          
-          <!-- Product 3 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://i.ebayimg.com/images/g/2jkAAOSw5vZk0r1W/s-l1600.jpg" alt="Brake Shoe 4707Q">
-            </div>
-            <div class="product-content">
-              <span class="product-code">4707Q</span>
-              <h3>Commercial Brake Shoe</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
-          
-          <!-- Product 4 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://i.ebayimg.com/images/g/7eAAAOSwB9Fk0Q4X/s-l1600.jpg" alt="Brake Shoe 4515Q-23KW">
-            </div>
-            <div class="product-content">
-              <span class="product-code">4515Q-23KW</span>
-              <h3>Premium Brake Shoe</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
-          
-          <!-- Product 5 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://via.placeholder.com/300x200?text=Brake+Shoe" alt="Heavy Duty Brake Shoe">
-            </div>
-            <div class="product-content">
-              <span class="product-code">HDBS-5000</span>
-              <h3>Heavy Duty Truck Brake Shoe Set</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
-          
-          <!-- Product 6 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="https://via.placeholder.com/300x200?text=Brake+Shoe" alt="Premium Brake Shoe">
-            </div>
-            <div class="product-content">
-              <span class="product-code">PBS-7000</span>
-              <h3>Premium Long-Life Brake Shoe</h3>
-              <p>Contact for Pricing</p>
-              <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            </div>
-          </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/300x200?text=4707Q" alt="Brake Shoe 4707Q">
         </div>
-        
-        <!-- Pagination -->
-        <div class="pagination">
-          <ul class="pagination-list">
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
-          </ul>
+        <div class="product-content">
+          <span class="product-code">4707Q</span>
+          <h3>Commercial Brake Shoe</h3>
+          <p>Contact for Pricing</p>
+          <a href="#contact" class="btn btn-primary">Get a Quote</a>
         </div>
-      </section>
+      </div>
     </div>
-  </main>
-  
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Us</h2>
+    <p>JeyRob Distribution Ltd. is Canada’s trusted distributor of premium brake shoes, partnering with leading Turkish and global manufacturers. Our mission is to deliver reliable, high-performance products for heavy, medium, and light-duty vehicles.</p>
+  </section>
+
+  <!-- Manufacturers -->
+  <section id="partners" class="container">
+    <h2>For Manufacturers</h2>
+    <p>Are you a brake shoe manufacturer seeking entry into the Canadian market? JeyRob Distribution is your reliable partner. We offer distribution, logistics, and sales channels to help your products reach customers across Canada.</p>
+    <a href="#contact" class="btn btn-primary">Partner With Us</a>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <form action="mailto:sales@jeyrob.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-container">
         <div class="footer-col">
           <h3>JeyRob Distribution Ltd.</h3>
-          <p>Canada's trusted distributor of premium brake shoes from top Turkish manufacturers.</p>
+          <p>Canada's trusted distributor of premium brake shoes from top manufacturers.</p>
         </div>
         <div class="footer-col">
           <h3>Quick Links</h3>
@@ -323,7 +233,6 @@
             <li><a href="#products">WK4311E</a></li>
             <li><a href="#products">4709ES2</a></li>
             <li><a href="#products">4707Q</a></li>
-            <li><a href="#products">4515Q-23KW</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -336,7 +245,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p>&copy; 2023 JeyRob Distribution Ltd. All rights reserved.</p>
+        <p>&copy; 2025 JeyRob Distribution Ltd. All rights reserved.</p>
       </div>
     </div>
   </footer>
