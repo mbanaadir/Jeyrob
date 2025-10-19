@@ -3,376 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="JeyRob Distribution Ltd. - Premium Brake Shoes for heavy, medium, and light-duty vehicles from trusted manufacturers.">
-  <title>JeyRob Distribution Ltd. - Premium Brake Shoes</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #28a745; /* Green */
-      --secondary: #1e7e34; /* Dark Green */
-      --accent: #e63946; /* Red Accent */
-      --light: #f8f9fa;
-      --dark: #212529;
-      --gray: #6c757d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--dark); background: #fff; }
-    header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    .header-top { background: var(--primary); color: white; padding: 8px 0; font-size: 14px; }
-    .header-top-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .contact-info a, .social-icons a { color: white; text-decoration: none; display: flex; align-items: center; gap: 5px; }
-    .social-icons a { font-size: 16px; }
-    .header-main { padding: 15px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .logo { font-size: 28px; font-weight: bold; color: var(--primary); text-decoration: none; }
-    .logo span { color: var(--accent); }
-    nav ul { display: flex; list-style: none; gap: 25px; flex-wrap: wrap; }
-    nav ul li a { color: var(--dark); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-    nav ul li a:hover { color: var(--primary); }
-    .nav-btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: background 0.3s; }
-    .nav-btn:hover { background: var(--secondary); }
-
-    /* Hero */
-    .hero {
-      background: url("https://via.placeholder.com/1600x500?text=Premium+Brake+Shoes") center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 120px 20px;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 { font-size: 42px; margin-bottom: 20px; }
-    .hero p { font-size: 18px; margin-bottom: 30px; }
-    .hero .btn { background: var(--accent); }
-
-    /* Abstract Background */
-    .abstract-bg {
-      background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.03));
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%; 
-      z-index: -1;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    /* Products */
-    .products-section { margin: 60px 0; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-    .product-card { background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .product-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .product-img { height: 200px; overflow: hidden; }
-    .product-img img { width: 100%; height: 100%; object-fit: contain; padding: 15px; transition: transform 0.3s ease; }
-    .product-card:hover .product-img img { transform: scale(1.05); }
-    .product-content { padding: 20px; }
-    .product-content .product-code { color: var(--primary); font-weight: 600; }
-    .product-content h3 { margin: 10px 0; font-size: 1.1rem; color: var(--dark); }
-    .product-content p { font-size: 1rem; color: var(--accent); margin-bottom: 15px; }
-    .btn { display: inline-block; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease-in-out; }
-    .btn-primary { background: var(--primary); color: white; border: none; cursor: pointer; }
-    .btn-primary:hover { background: var(--secondary); transform: translateY(-2px); }
-
-    /* Sections */
-    section { margin: 60px 0; }
-    section h2 { font-size: 28px; margin-bottom: 20px; color: var(--dark); }
-
-    /* Contact Form */
-    .contact-form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .contact-form input, .contact-form textarea {
-      width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;
-    }
-    .contact-form button { width: 100%; }
-
-    /* Footer */
-    footer { background: var(--dark); color: white; padding: 60px 0 30px; margin-top: 60px; }
-    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h3 { font-size: 20px; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background: var(--primary); }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
-    .footer-col ul li a:hover { color: white; }
-    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #444; color: #ccc; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .products-grid { grid-template-columns: 1fr; }
-      .header-main, nav ul { flex-direction: column; text-align: center; }
-    }
-  </style>
+  <title>JeyRob Distribution Ltd. | Premium Brake Shoes from Turkish Manufacturers to Canada</title>
+  <meta name="description" content="Partner with JeyRob for seamless distribution of your Turkish brake shoes in Canada. Logistics, sales channels, and heavy-duty solutions.">
+  <meta name="keywords" content="brake shoes, Turkish manufacturers, Canadian distributor, heavy-duty brakes, JeyRob Distribution">
+  <meta property="og:title" content="JeyRob: Your Canadian Brake Shoe Partner">
+  <meta property="og:description" content="Entering the Canadian market? Download our brochure and partner with JeyRob Distribution Ltd.">
+  <meta property="og:image" content="https://www.jeyrob.com/assets/logo.png">
+  <meta property="og:url" content="https://www.jeyrob.com/">
+  <link rel="canonical" href="https://www.jeyrob.com/">
+  <link rel="stylesheet" href="styles.css"> <!-- Assumes CSS file in same folder -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
-
-  <!-- Header -->
-  <div class="header-top">
-    <div class="container header-top-container">
-      <div class="contact-info">
-        <a href="mailto:sales@jeyrob.com"><i class="fas fa-envelope"></i> sales@jeyrob.com</a>
-        <a href="tel:+17809539528"><i class="fas fa-phone"></i> (780) 953-9528</a>
-      </div>
-      <div class="social-icons">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
   <header>
-    <div class="container header-main">
-      <a href="#home" class="logo">Jey<span>Rob</span> Distribution</a>
-      <nav aria-label="Main Navigation">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#partners">For Manufacturers</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <a href="#contact" class="nav-btn">Get a Quote</a>
-    </div>
+    <nav>
+      <img src="assets/logo.png" alt="JeyRob Distribution Ltd. Logo" class="logo">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#manufacturers">For Manufacturers</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Premium Brake Shoes</h1>
-      <p>Supplying Canada with high-quality, heavy-duty brake shoes from trusted manufacturers</p>
-      <a href="#products" class="btn">Explore Products</a>
-    </div>
-    <div class="abstract-bg"></div>
+  <section id="home">
+    <h1>Premium Brake Shoes for the Canadian Market</h1>
+    <p>JeyRob Distribution Ltd. connects Turkish brake shoe manufacturers with Canadian buyers, ensuring quality, compliance, and seamless logistics.</p>
+    <a href="#manufacturers" class="cta-button">Partner With Us</a>
   </section>
 
-  <!-- Products -->
-  <section id="products" class="container products-section">
+  <section id="products">
     <h2>Our Brake Shoes</h2>
-    <div class="products-grid">
-      <!-- Product 1 -->
+    <div class="product-grid">
       <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=WK4311E" alt="Brake Shoe WK4311E">
-        </div>
-        <div class="product-content">
-          <span class="product-code">WK4311E</span>
-          <h3>Heavy-Duty Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
+        <img src="assets/wk4311e.jpg" alt="Brake Shoe WK4311E - Heavy-Duty for Trucks" loading="lazy">
+        <h3>Brake Shoe WK4311E</h3>
+        <p>Heavy-duty option for demanding applications. Built for durability and performance.</p>
+        <a href="#contact" class="cta-button">Get a Quote</a>
       </div>
-      <!-- Product 2 -->
       <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=4709ES2" alt="Brake Shoe 4709ES2">
-        </div>
-        <div class="product-content">
-          <span class="product-code">4709ES2</span>
-          <h3>Performance Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
+        <img src="assets/wk4312e.jpg" alt="Brake Shoe WK4312E - Standard Duty" loading="lazy">
+        <h3>Brake Shoe WK4312E</h3>
+        <p>Reliable braking for standard vehicles. Cost-effective and high-quality.</p>
+        <a href="#contact" class="cta-button">Get a Quote</a>
       </div>
-      <!-- Product 3 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=4707Q" alt="Brake Shoe 4707Q">
-        </div>
-        <div class="product-content">
-          <span class="product-code">4707Q</span>
-          <h3>Commercial Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
-      </div>
+      <!-- Add more products as needed -->
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="container">
-    <h2>About Us</h2>
-    <p>JeyRob Distribution Ltd. is Canada’s trusted distributor of premium brake shoes, partnering with leading Turkish and global manufacturers. Our mission is to deliver reliable, high-performance products for heavy, medium, and light-duty vehicles.</p>
-  </section>
-
-  <!-- Manufacturers -->
-  <section id="partners" class="container">
+  <section id="manufacturers">
     <h2>For Manufacturers</h2>
-    <p>Are you a brake shoe manufacturer seeking entry into the Canadian market? JeyRob Distribution is your reliable partner. We offer distribution, logistics, and sales channels to help your products reach customers across Canada.</p>
-    <a href="#contact" class="btn btn-primary">Partner With Us</a>
+    <p>Are you a Turkish brake shoe manufacturer seeking entry into the Canadian market? JeyRob Distribution Ltd. is your ideal partner. We offer:</p>
+    <ul>
+      <li>Established sales channels across Canada</li>
+      <li>Expertise in Canadian regulatory compliance</li>
+      <li>Seamless logistics and warehousing solutions</li>
+      <li>Proven track record: 10,000+ units distributed annually</li>
+    </ul>
+    <p>Download our company profile to learn more about our partnership opportunities.</p>
+    <a href="assets/jeyrob-brochure.pdf" download class="download-link">Download Company Profile (PDF)</a>
+    <a href="#contact" class="cta-button">Start Our Partnership</a>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="container">
-    <h2>Contact Us</h2>
-    <div class="contact-form">
-      <form action="mailto:sales@jeyrob.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h3>JeyRob Distribution Ltd.</h3>
-          <p>Canada's trusted distributor of premium brake shoes from top manufacturers.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#partners">For Manufacturers</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Products</h3>
-          <ul>
-            <li><a href="#products">WK4311E</a></li>
-            <li><a href="#products">4709ES2</a></li>
-            <li><a href="#products">4707Q</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Contact Info</h3>
-          <ul>
-            <li><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta, Canada</li>
-            <li><i class="fas fa-phone"></i> (780) 953-9528</li>
-            <li><i class="fas fa-envelope"></i> sales@jeyrob.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2025 JeyRob Distribution Ltd. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
-
-  <!-- Products -->
-  <section id="products" class="container products-section">
-    <h2>Our Brake Shoes</h2>
-    <div class="products-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=WK4311E" alt="Brake Shoe WK4311E">
-        </div>
-        <div class="product-content">
-          <span class="product-code">WK4311E</span>
-          <h3>Heavy-Duty Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
-      </div>
-      <!-- Product 2 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=4709ES2" alt="Brake Shoe 4709ES2">
-        </div>
-        <div class="product-content">
-          <span class="product-code">4709ES2</span>
-          <h3>Performance Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
-      </div>
-      <!-- Product 3 -->
-      <div class="product-card">
-        <div class="product-img">
-          <img src="https://via.placeholder.com/300x200?text=4707Q" alt="Brake Shoe 4707Q">
-        </div>
-        <div class="product-content">
-          <span class="product-code">4707Q</span>
-          <h3>Commercial Brake Shoe</h3>
-          <p>Contact for Pricing</p>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="container">
+  <section id="about">
     <h2>About Us</h2>
-    <p>JeyRob Distribution Ltd. is Canada’s trusted distributor of premium brake shoes, partnering with leading Turkish and global manufacturers. Our mission is to deliver reliable, high-performance products for heavy, medium, and light-duty vehicles.</p>
+    <p>JeyRob Distribution Ltd., based in Canada, specializes in bridging Turkish brake shoe manufacturers with North American markets. With years of experience, we ensure your products reach Canadian buyers efficiently and reliably.</p>
   </section>
 
-  <!-- Manufacturers -->
-  <section id="partners" class="container">
-    <h2>For Manufacturers</h2>
-    <p>Are you a brake shoe manufacturer seeking entry into the Canadian market? JeyRob Distribution is your reliable partner. We offer distribution, logistics, and sales channels to help your products reach customers across Canada.</p>
-    <a href="#contact" class="btn btn-primary">Partner With Us</a>
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>Ready to bring your brake shoes to Canada? Contact us today.</p>
+    <form action="https://formspree.io/f/your-endpoint" method="POST">
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us about your manufacturing needs..." required></textarea>
+      <button type="submit" class="cta-button">Send Message</button>
+    </form>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="container">
-    <h2>Contact Us</h2>
-    <div class="contact-form">
-      <form action="mailto:sales@jeyrob.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h3>JeyRob Distribution Ltd.</h3>
-          <p>Canada's trusted distributor of premium brake shoes from top manufacturers.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#partners">For Manufacturers</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Products</h3>
-          <ul>
-            <li><a href="#products">WK4311E</a></li>
-            <li><a href="#products">4709ES2</a></li>
-            <li><a href="#products">4707Q</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Contact Info</h3>
-          <ul>
-            <li><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta, Canada</li>
-            <li><i class="fas fa-phone"></i> (780) 953-9528</li>
-            <li><i class="fas fa-envelope"></i> sales@jeyrob.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2025 JeyRob Distribution Ltd. All rights reserved.</p>
-      </div>
-    </div>
+    <p>&copy; 2025 JeyRob Distribution Ltd. All rights reserved.</p>
+    <p><a href="mailto:info@jeyrob.com">info@jeyrob.com</a> | <a href="#contact">Contact Us</a></p>
   </footer>
-
 </body>
 </html>
