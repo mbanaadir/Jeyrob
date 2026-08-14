@@ -1,97 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JeyRob Distribution Ltd. | Premium Brake Shoes from Turkish Manufacturers to Canada</title>
-  <meta name="description" content="Partner with JeyRob for seamless distribution of your Turkish brake shoes in Canada. Logistics, sales channels, and heavy-duty solutions.">
-  <meta name="keywords" content="brake shoes, Turkish manufacturers, Canadian distributor, heavy-duty brakes, JeyRob Distribution">
-  <meta property="og:title" content="JeyRob: Your Canadian Brake Shoe Partner">
-  <meta property="og:description" content="Entering the Canadian market? Download our brochure and partner with JeyRob Distribution Ltd.">
-  <meta property="og:image" content="https://www.jeyrob.com/assets/logo.png">
-  <meta property="og:url" content="https://www.jeyrob.com/">
-  <link rel="canonical" href="https://www.jeyrob.com/">
-  <link rel="stylesheet" href="styles.css"> <!-- Assumes CSS file in same folder -->
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JeyRob Distribution — Heavy-Duty Truck Brake Shoes | Turkey to Canada</title>
+<meta name="description" content="JeyRob Distribution supplies Canadian fleets and parts distributors with OEM-grade heavy-duty truck brake shoes — Eaton 4311E/4312E, Meritor Q/Q+, Haldex equivalents — shipped direct from Turkish factories at 30–50% below OEM.">
+<meta property="og:title" content="JeyRob Distribution — Heavy-Duty Truck Brake Shoes">
+<meta property="og:description" content="OEM-grade brake shoes shipped direct from Turkish factories to Canada. 30–50% below North American prices. Request a quote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jeyrob.com">
+<link rel="canonical" href="https://jeyrob.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "JeyRob Distribution Ltd",
+  "url": "https://jeyrob.com",
+  "description": "Heavy-duty truck brake shoes imported from Turkey to Canada.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Edmonton",
+    "addressRegion": "Alberta",
+    "addressCountry": "CA"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#0f1216;
+    --surface:#171b21;
+    --surface-2:#1e242c;
+    --ink:#ece9e4;
+    --muted:#9aa0a8;
+    --accent:#f97316;
+    --accent-deep:#ea580c;
+    --accent-ink:#151006;
+    --border:#262d36;
+    --ok:#34d399;
+    --radius:10px;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-wrap:pretty;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .stripe{height:6px;background:repeating-linear-gradient(-45deg,var(--accent) 0 16px,var(--bg) 16px 32px)}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,18,22,.88);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:.04em;text-transform:uppercase}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem;transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.02rem;
+    letter-spacing:.03em;text-transform:uppercase;
+    padding:12px 22px;border-radius:6px;border:1px solid transparent;
+    cursor:pointer;transition:.15s;min-height:44px;
+  }
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{background:var(--accent-deep)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+  .btn-ghost:hover{border-color:var(--muted)}
+  .nav-cta{padding:10px 18px}
+
+  #nav-toggle{display:none}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+  .burger i{width:24px;height:2px;background:var(--ink);display:block}
+
+  header.hero{position:relative;overflow:hidden;padding:96px 0 80px;border-bottom:1px solid var(--border)}
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(1200px 500px at 85% -10%,rgba(249,115,22,.14),transparent 60%),
+      radial-gradient(700px 400px at -10% 110%,rgba(249,115,22,.06),transparent 60%);
+    pointer-events:none;
+  }
+  .hero-in{position:relative;z-index:1;max-width:760px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;font-size:.9rem;color:var(--accent);margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:34px;height:3px;background:var(--accent)}
+  h1{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.02;letter-spacing:.005em;
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .hero p.lede{color:var(--muted);font-size:1.16rem;max-width:600px;margin-bottom:32px}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+  .values{border-bottom:1px solid var(--border)}
+  .values-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+  .value{background:var(--surface);padding:26px 26px 28px}
+  .value b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .value p{color:var(--muted);font-size:.98rem}
+
+  section{padding:80px 0}
+  .sec-head{max-width:720px;margin-bottom:44px}
+  .sec-head .eyebrow{margin-bottom:14px}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.05;text-transform:uppercase;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:1.06rem}
+
+  .why-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+  .why-list{list-style:none;display:flex;flex-direction:column}
+  .why-list li{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--border)}
+  .why-list li:last-child{border-bottom:1px solid var(--border)}
+  .why-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.9rem;color:var(--accent);line-height:1;min-width:44px}
+  .why-list h3{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+  .why-list p{color:var(--muted);font-size:.98rem}
+
+  .products{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .prod{
+    background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px;transition:border-color .15s,transform .15s;
+  }
+  .prod:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .prod .tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .prod h3{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+  .prod .pn{font-family:monospace;font-size:.85rem;color:var(--ok);margin-bottom:8px}
+  .prod p{color:var(--muted);font-size:.95rem}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+  .step .n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:12px}
+  .step h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.93rem}
+
+  .quality-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+  .q-block{padding:22px 0;border-top:1px solid var(--border)}
+  .q-block:last-child{border-bottom:1px solid var(--border)}
+  .q-block h3{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+  .q-block p{color:var(--muted);font-size:.98rem}
+  .q-block .ok-line{color:var(--ok);font-weight:600;font-size:.95rem;margin-top:8px}
+
+  .mfr{background:var(--surface);border-top:1px solid var(--border)}
+  .mfr-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+
+  .quote{background:var(--surface);border-top:1px solid var(--border)}
+  .quote-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+  .form{display:grid;gap:16px}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;color:var(--muted)}
+  input,textarea,select{
+    width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;
+    color:var(--ink);font-family:'Barlow',sans-serif;font-size:1rem;padding:12px 14px;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+  textarea{min-height:110px;resize:vertical}
+  .form-note{color:var(--muted);font-size:.85rem}
+
+  footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 0 64px}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot .brand{font-size:1.3rem}
+  .foot p{color:var(--muted);font-size:.9rem}
+
+  @media(max-width:900px){
+    .values-in{grid-template-columns:1fr}
+    .why-grid,.quality-grid,.quote-grid,.mfr-grid{grid-template-columns:1fr;gap:36px}
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .nav-links{position:absolute;top:68px;left:0;right:0;background:var(--bg);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);display:none}
+    .burger{display:flex}
+    #nav-toggle:checked ~ .nav-links{display:flex}
+  }
+  @media(max-width:560px){
+    .prod-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .form .row{grid-template-columns:1fr}
+    section{padding:56px 0}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <img src="assets/logo.png" alt="JeyRob Distribution Ltd. Logo" class="logo">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#manufacturers">For Manufacturers</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="home">
-    <h1>Premium Brake Shoes for the Canadian Market</h1>
-    <p>JeyRob Distribution Ltd. connects Turkish brake shoe manufacturers with Canadian buyers, ensuring quality, compliance, and seamless logistics.</p>
-    <a href="#manufacturers" class="cta-button">Partner With Us</a>
-  </section>
+<div class="stripe"></div>
 
-  <section id="products">
-    <h2>Our Brake Shoes</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="assets/wk4311e.jpg" alt="Brake Shoe WK4311E - Heavy-Duty for Trucks" loading="lazy">
-        <h3>Brake Shoe WK4311E</h3>
-        <p>Heavy-duty option for demanding applications. Built for durability and performance.</p>
-        <a href="#contact" class="cta-button">Get a Quote</a>
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">JeyRob<span>.</span></a>
+    <input type="checkbox" id="nav-toggle">
+    <label class="burger" for="nav-toggle"><i></i><i></i><i></i></label>
+    <div class="nav-links">
+      <a href="#why">Why JeyRob</a>
+      <a href="#products">Brake Shoes</a>
+      <a href="#how">How It Works</a>
+      <a href="#quality">Quality</a>
+      <a href="#quote" class="btn btn-primary nav-cta">Request a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <span class="eyebrow">Turkey → Canada · Heavy-Duty Brake Shoes</span>
+    <h1>Heavy-duty brake shoes, direct from the factory to your door.</h1>
+    <p class="lede">JeyRob Distribution connects Canadian fleets and parts distributors with Turkey's leading brake-shoe manufacturers — OEM-grade quality at 30–50% below North American prices.</p>
+    <div class="cta-row">
+      <a href="#quote" class="btn btn-primary">Request a Quote</a>
+      <a href="#products" class="btn btn-ghost">Browse Brake Shoes</a>
+    </div>
+  </div>
+</header>
+
+<div class="values">
+  <div class="wrap values-in">
+    <div class="value"><b>30–50% below OEM</b><p>Direct factory pricing on brake shoes — no middlemen, no inflated markups.</p></div>
+    <div class="value"><b>Duty-free import</b><p>Brake shoes (HS 8708.30) enter Canada at 0% duty, and GST is recoverable.</p></div>
+    <div class="value"><b>OEM-grade factories</b><p>Partner factories supply Mack, Volvo and Meritor and export to 100+ countries.</p></div>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap why-grid">
+    <div class="sec-head">
+      <span class="eyebrow">Why JeyRob</span>
+      <h2>Source directly. Pay factory prices. Skip the markup.</h2>
+      <p>We give Canadian buyers a direct line to Turkey's top brake-shoe manufacturers, with honest landed pricing and none of the traditional distributor layers.</p>
+    </div>
+    <ol class="why-list">
+      <li>
+        <span class="why-num">01</span>
+        <div><h3>Direct from the factory</h3><p>You buy at the source — no brokers, no import middlemen, no inflated markups.</p></div>
+      </li>
+      <li>
+        <span class="why-num">02</span>
+        <div><h3>Quality you can trust</h3><p>Partner factories hold IATF 16949 and manufacture for global OEM brands.</p></div>
+      </li>
+      <li>
+        <span class="why-num">03</span>
+        <div><h3>Honest landed pricing</h3><p>We quote FOB + freight + duty up front, so the price you see is the price you pay.</p></div>
+      </li>
+      <li>
+        <span class="why-num">04</span>
+        <div><h3>Built for reorders</h3><p>Brake shoes wear out — we make restocking simple, consistent and predictable.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<div class="products" id="products">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Product Range</span>
+        <h2>Brake shoes Canadian fleets actually reorder</h2>
+        <p>We stock the heavy-duty shoes that move the most — Eaton-style and Meritor standards — for Class 6–8 trucks and trailers. Need a size we don't list? Ask.</p>
       </div>
-      <div class="product-card">
-        <img src="assets/wk4312e.jpg" alt="Brake Shoe WK4312E - Standard Duty" loading="lazy">
-        <h3>Brake Shoe WK4312E</h3>
-        <p>Reliable braking for standard vehicles. Cost-effective and high-quality.</p>
-        <a href="#contact" class="cta-button">Get a Quote</a>
+      <div class="prod-grid">
+        <div class="prod"><span class="tag">Most Common</span><h3>4311E · Heavy-Duty</h3><p class="pn">16.5" · 23,000-lb GAWR</p><p>The North American workhorse — Eaton-style "E" shoe, direct OEM replacement.</p></div>
+        <div class="prod"><span class="tag">Standard Duty</span><h3>4312E · Standard</h3><p class="pn">16.5"</p><p>Cost-effective shoe for standard applications — reliable, consistent braking.</p></div>
+        <div class="prod"><span class="tag">Meritor</span><h3>Meritor Q · 4515</h3><p class="pn">Q-Series</p><p>The other big standard — Q-series shoes for Meritor/Rockwell axles.</p></div>
+        <div class="prod"><span class="tag">Meritor</span><h3>Meritor Q+ · 4707</h3><p class="pn">Q+-Series</p><p>Q+ series with deeper cam profile — for newer Meritor axle applications.</p></div>
+        <div class="prod"><span class="tag">FMVSS-121</span><h3>Haldex Equivalents</h3><p class="pn">Certified Linings</p><p>Certified friction equivalent to leading Haldex linings, at a better price.</p></div>
+        <div class="prod"><span class="tag">Coming Soon</span><h3>Full Brake Range</h3><p class="pn">Drums · Discs · Pads · Chambers</p><p>We're expanding into drums, discs, pads, chambers and slack adjusters. Ask for availability.</p></div>
       </div>
-      <!-- Add more products as needed -->
     </div>
   </section>
+</div>
 
-  <section id="manufacturers">
-    <h2>For Manufacturers</h2>
-    <p>Are you a Turkish brake shoe manufacturer seeking entry into the Canadian market? JeyRob Distribution Ltd. is your ideal partner. We offer:</p>
-    <ul>
-      <li>Established sales channels across Canada</li>
-      <li>Expertise in Canadian regulatory compliance</li>
-      <li>Seamless logistics and warehousing solutions</li>
-      <li>Proven track record: 10,000+ units distributed annually</li>
-    </ul>
-    <p>Download our company profile to learn more about our partnership opportunities.</p>
-    <a href="assets/jeyrob-brochure.pdf" download class="download-link">Download Company Profile (PDF)</a>
-    <a href="#contact" class="cta-button">Start Our Partnership</a>
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>From quote to your warehouse in four steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Tell us what you need</h3><p>Send part numbers, vehicle make/model, and quantities.</p></div>
+      <div class="step"><div class="n">2</div><h3>Get a landed quote</h3><p>Receive FOB + freight + duty pricing, usually within 48 hours.</p></div>
+      <div class="step"><div class="n">3</div><h3>We ship from the factory</h3><p>Shoes are drop-shipped direct from Turkey to your yard or warehouse.</p></div>
+      <div class="step"><div class="n">4</div><h3>Reorder with ease</h3><p>Same shoes, same quality — fast, consistent restocking.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="quality">
+  <div class="wrap quality-grid">
+    <div class="sec-head">
+      <span class="eyebrow">Quality & Compliance</span>
+      <h2>Shoes you can put on a truck with confidence</h2>
+      <p>We only work with established Turkish manufacturers with proven export records and international certification — not traders selling unknown stock.</p>
+    </div>
+    <div>
+      <div class="q-block">
+        <h3>EKU Fren</h3>
+        <p>Founded 1962. Europe's largest brake-component foundry. Supplies Mack, Volvo, Meritor and DAF; exports to 100+ countries for 25+ years.</p>
+      </div>
+      <div class="q-block">
+        <h3>Beşer Balatacılık</h3>
+        <p>Founded 1969. Friction specialist holding IATF 16949 certification, with exports to 68+ countries.</p>
+      </div>
+      <div class="q-block">
+        <h3>Import made simple</h3>
+        <p>Brake shoes classify under HS 8708.30 and enter Canada duty-free under MFN. GST is recoverable for registered businesses.</p>
+        <p class="ok-line">✓ 0% duty &nbsp;·&nbsp; ✓ Recoverable GST &nbsp;·&nbsp; ✓ Brokerage guidance included</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mfr">
+  <section>
+    <div class="wrap mfr-grid">
+      <div class="sec-head">
+        <span class="eyebrow">For Turkish Manufacturers</span>
+        <h2>Bring your brake shoes to Canada</h2>
+        <p>We partner with Turkish brake-shoe and friction manufacturers to open the Canadian market — compliance guidance, buyer network, and logistics handled.</p>
+      </div>
+      <ol class="why-list">
+        <li>
+          <span class="why-num">01</span>
+          <div><h3>Established buyer channels</h3><p>Direct relationships with Canadian fleets and independent distributors.</p></div>
+        </li>
+        <li>
+          <span class="why-num">02</span>
+          <div><h3>Regulatory guidance</h3><p>We handle Canadian compliance and import requirements so you don't have to.</p></div>
+        </li>
+        <li>
+          <span class="why-num">03</span>
+          <div><h3>Seamless logistics</h3><p>Drop-ship and freight coordination from your factory to the Canadian buyer.</p></div>
+        </li>
+      </ol>
+    </div>
   </section>
+</div>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>JeyRob Distribution Ltd., based in Canada, specializes in bridging Turkish brake shoe manufacturers with North American markets. With years of experience, we ensure your products reach Canadian buyers efficiently and reliably.</p>
+<div class="quote" id="quote">
+  <section>
+    <div class="wrap quote-grid">
+      <div class="sec-head">
+        <span class="eyebrow">Request a Quote</span>
+        <h2>Get pricing on your brake shoes</h2>
+        <p>Tell us what you need and we'll reply with a landed-cost quote. No obligation, no spam — just honest factory-direct pricing.</p>
+      </div>
+      <form class="form" id="quote-form">
+        <div class="row">
+          <div><label for="name">Name</label><input id="name" name="name" type="text" required></div>
+          <div><label for="company">Company</label><input id="company" name="company" type="text"></div>
+        </div>
+        <div class="row">
+          <div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel"></div>
+        </div>
+        <div>
+          <label for="parts">Brake shoes needed</label>
+          <input id="parts" name="parts" type="text" placeholder="e.g. 4311E, 4312E, Meritor Q — with part numbers if you have them">
+        </div>
+        <div class="row">
+          <div><label for="qty">Quantity</label><input id="qty" name="qty" type="text" placeholder="e.g. 200 sets"></div>
+          <div><label for="make">Vehicle make/model</label><input id="make" name="make" type="text" placeholder="e.g. Freightliner Cascadia"></div>
+        </div>
+        <div>
+          <label for="message">Message (optional)</label>
+          <textarea id="message" name="message" placeholder="Anything else we should know…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-content:center">Send Quote Request</button>
+        <p class="form-note">Your request opens in your email app and sends directly to our sales team.</p>
+      </form>
+    </div>
   </section>
+</div>
 
-  <section id="contact">
-    <h2>Get in Touch</h2>
-    <p>Ready to bring your brake shoes to Canada? Contact us today.</p>
-    <form action="https://formspree.io/f/your-endpoint" method="POST">
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Tell us about your manufacturing needs..." required></textarea>
-      <button type="submit" class="cta-button">Send Message</button>
-    </form>
-  </section>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="brand">JeyRob<span>.</span></div>
+      <p>Heavy-duty truck brake shoes · Turkey → Canada</p>
+    </div>
+    <div>
+      <p>JeyRob Distribution Ltd<br>Edmonton, Alberta, Canada</p>
+      <p><a href="mailto:info@jeyrob.com">info@jeyrob.com</a></p>
+    </div>
+  </div>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 JeyRob Distribution Ltd. All rights reserved.</p>
-    <p><a href="mailto:info@jeyrob.com">info@jeyrob.com</a> | <a href="#contact">Contact Us</a></p>
-  </footer>
+<script>
+  (function(){
+    var form = document.getElementById('quote-form');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var f = form;
+      var v = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      var lines = [
+        'Name: ' + v('name'),
+        'Company: ' + v('company'),
+        'Email: ' + v('email'),
+        'Phone: ' + v('phone'),
+        'Brake shoes needed: ' + v('parts'),
+        'Quantity: ' + v('qty'),
+        'Vehicle make/model: ' + v('make'),
+        'Message: ' + v('message')
+      ];
+      var body = encodeURIComponent(lines.join('\n'));
+      var subject = encodeURIComponent('Quote Request — ' + (v('company') || v('name')));
+      window.location.href = 'mailto:info@jeyrob.com?subject=' + subject + '&body=' + body;
+    });
+  })();
+</script>
+
 </body>
 </html>
