@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canadian Curriculum Learning Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🍁 <strong>Canadian Curriculum</strong> <span class="brand-sub">Learning Hub</span></div>
+    <div class="top-actions">
+      <select id="studentSelect" class="student-select" aria-label="Choose student"></select>
+      <button id="addStudentBtn" class="btn btn-accent">+ Add Child</button>
+    </div>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <!-- Add / edit student modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <h2 id="modalTitle">Add a child</h2>
+      <form id="studentForm">
+        <label for="studentName">Child's name</label>
+        <input id="studentName" type="text" placeholder="e.g. Amina" required />
+        <label for="studentGrade">Grade</label>
+        <select id="studentGrade">
+          <option value="1">Grade 1</option>
+          <option value="2">Grade 2</option>
+          <option value="3">Grade 3</option>
+          <option value="4">Grade 4</option>
+          <option value="5">Grade 5</option>
+          <option value="6">Grade 6</option>
+          <option value="7">Grade 7</option>
+          <option value="8">Grade 8</option>
+          <option value="9">Grade 9</option>
+          <option value="10">Grade 10</option>
+          <option value="11">Grade 11</option>
+          <option value="12">Grade 12</option>
+        </select>
+        <div class="modal-actions">
+          <button type="button" id="modalCancel" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-accent">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="subjects.js"></script>
+  <script src="g1-3.js"></script>
+  <script src="g4-6.js"></script>
+  <script src="g7-9.js"></script>
+  <script src="g10-12.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
