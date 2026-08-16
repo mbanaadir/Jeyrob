@@ -189,28 +189,52 @@
     });
   }
 
+  function renderLessonBlocks(lesson) {
+    return (lesson || []).map(function (b) {
+      if (b.t === 'h') return '<h3 class="lesson-h">' + esc(b.text) + '</h3>';
+      if (b.t === 'key') return '<div class="lesson-key"><strong>🔑 Key idea:</strong> ' + esc(b.text) + '</div>';
+      if (b.t === 'example') return '<div class="lesson-example"><strong>✏️ ' + esc(b.title || 'Worked example') + '</strong><div class="lesson-example-body">' + esc(b.text) + '</div></div>';
+      return '<p class="lesson-p">' + esc(b.text) + '</p>';
+    }).join('');
+  }
+
   function renderTopic(s) {
     var sub = subjectById(view.subjectId);
     var t = topicsFor(s, sub.id)[view.topicIndex];
     var done = isDone(s.id, sub.id, view.topicIndex);
-    var resources = (t.resources && t.resources.length ? t.resources : sub.resources)
-      .map(function (r) {
-        return '<a class="resource-link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' +
-          '<span class="r-emoji">' + (r.emoji || '🔗') + '</span>' +
-          '<span><span class="r-label">' + esc(r.label) + '</span><br><span class="r-url">' + esc(r.url) + '</span></span></a>';
-      }).join('');
+    var hasLesson = t.lesson && t.lesson.length;
+
+    var bodyHtml;
+    if (hasLesson) {
+      bodyHtml =
+        '<div class="panel">' +
+        '<div class="pill" style="background:#e8f0fe;color:#1f56c4">' + (done ? '✓ Completed' : 'Lesson ' + (view.topicIndex + 1)) + '</div>' +
+        '<h2>' + sub.emoji + ' ' + esc(t.title) + '</h2>' +
+        '<p class="muted lesson-lead">' + esc(t.summary) + '</p>' +
+        renderLessonBlocks(t.lesson) +
+        '</div>';
+    } else {
+      var resources = (t.resources && t.resources.length ? t.resources : sub.resources)
+        .map(function (r) {
+          return '<a class="resource-link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' +
+            '<span class="r-emoji">' + (r.emoji || '🔗') + '</span>' +
+            '<span><span class="r-label">' + esc(r.label) + '</span><br><span class="r-url">' + esc(r.url) + '</span></span></a>';
+        }).join('');
+      bodyHtml =
+        '<div class="panel">' +
+        '<div class="pill" style="background:#e8f0fe;color:#1f56c4">' + (done ? '✓ Completed' : 'Topic ' + (view.topicIndex + 1)) + '</div>' +
+        '<h2>' + sub.emoji + ' ' + esc(t.title) + '</h2>' +
+        '<p class="lesson">' + esc(t.summary) + '</p>' +
+        '</div>' +
+        '<div class="panel"><h3 style="margin-top:0">📖 What to learn</h3>' +
+        (t.learn ? '<ul>' + t.learn.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Read the summary above, then use the free links below.</p>') +
+        '</div>' +
+        '<div class="panel"><h3 style="margin-top:0">🔗 Free learning links</h3>' + resources + '</div>';
+    }
 
     app.innerHTML =
       '<button class="back" id="back">← ' + sub.name + '</button>' +
-      '<div class="panel">' +
-      '<div class="pill" style="background:#e8f0fe;color:#1f56c4">' + (done ? '✓ Completed' : 'Topic ' + (view.topicIndex + 1)) + '</div>' +
-      '<h2>' + sub.emoji + ' ' + esc(t.title) + '</h2>' +
-      '<p class="lesson">' + esc(t.summary) + '</p>' +
-      '</div>' +
-      '<div class="panel"><h3 style="margin-top:0">📖 What to learn</h3>' +
-      (t.learn ? '<ul>' + t.learn.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Read the summary above, then use the free links below.</p>') +
-      '</div>' +
-      '<div class="panel"><h3 style="margin-top:0">🔗 Free learning links</h3>' + resources + '</div>' +
+      bodyHtml +
       '<button class="btn btn-green" id="startQuiz" style="width:100%;font-size:1.1rem;padding:15px">📝 ' + (done ? 'Take the quiz again' : 'Take the quiz') + '</button>';
 
     document.getElementById('back').onclick = function () { view = { name: 'topics', subjectId: sub.id }; render(); };

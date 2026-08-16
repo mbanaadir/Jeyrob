@@ -245,3 +245,25 @@ table.students th { background: #eef3fb; color: var(--ink); }
   .top-actions { width: 100%; justify-content: space-between; }
   .student-select { flex: 1; max-width: none; }
 }
+
+/* ---------- Lesson content (original curriculum) ---------- */
+.lesson-lead { margin: 0 0 14px; }
+.lesson-p { margin: 0 0 15px; font-size: 1.03rem; }
+.lesson-h { margin: 20px 0 8px; font-size: 1.14rem; }
+.lesson-key {
+  background: #eef5ff;
+  border-left: 4px solid var(--accent);
+  padding: 13px 15px;
+  border-radius: 9px;
+  margin: 14px 0;
+  font-size: 1rem;
+}
+.lesson-example {
+  background: #f2f9f3;
+  border-left: 4px solid var(--green);
+  padding: 13px 15px;
+  border-radius: 9px;
+  margin: 14px 0;
+  font-size: 1rem;
+}
+.lesson-example-body { margin-top: 7px; }
