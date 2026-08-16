@@ -214,12 +214,6 @@
         renderLessonBlocks(t.lesson) +
         '</div>';
     } else {
-      var resources = (t.resources && t.resources.length ? t.resources : sub.resources)
-        .map(function (r) {
-          return '<a class="resource-link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' +
-            '<span class="r-emoji">' + (r.emoji || '🔗') + '</span>' +
-            '<span><span class="r-label">' + esc(r.label) + '</span><br><span class="r-url">' + esc(r.url) + '</span></span></a>';
-        }).join('');
       bodyHtml =
         '<div class="panel">' +
         '<div class="pill" style="background:#e8f0fe;color:#1f56c4">' + (done ? '✓ Completed' : 'Topic ' + (view.topicIndex + 1)) + '</div>' +
@@ -227,9 +221,8 @@
         '<p class="lesson">' + esc(t.summary) + '</p>' +
         '</div>' +
         '<div class="panel"><h3 style="margin-top:0">📖 What to learn</h3>' +
-        (t.learn ? '<ul>' + t.learn.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Read the summary above, then use the free links below.</p>') +
-        '</div>' +
-        '<div class="panel"><h3 style="margin-top:0">🔗 Free learning links</h3>' + resources + '</div>';
+        (t.learn ? '<ul>' + t.learn.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Full lesson coming soon.</p>') +
+        '</div>';
     }
 
     app.innerHTML =
