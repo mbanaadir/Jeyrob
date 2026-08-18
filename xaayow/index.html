@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xaayow Logistics — Edmonton to Mogadishu Cargo | Sea Freight & Containers</title>
+<meta name="description" content="Xaayow Logistics ships cargo from Edmonton, Canada to Mogadishu, Somalia — household goods, vehicles, business cargo. The return leg of the frankincense route. Request a quote.">
+<meta property="og:title" content="Xaayow Logistics — Edmonton to Mogadishu Cargo">
+<meta property="og:description" content="Sea freight & containers from Edmonton to Mogadishu. Household goods, vehicles, business cargo. The return leg of the frankincense route.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jeyrob.com/xaayow/">
+<link rel="canonical" href="https://jeyrob.com/xaayow/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Xaayow Logistics",
+  "url": "https://jeyrob.com/xaayow/",
+  "description": "Cargo and sea freight from Edmonton, Canada to Mogadishu, Somalia.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Edmonton",
+    "addressRegion": "Alberta",
+    "addressCountry": "CA"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#0e1517;
+    --surface:#162024;
+    --surface-2:#1c2a30;
+    --ink:#e9f2f3;
+    --muted:#9fb4ba;
+    --accent:#14b8a6;
+    --accent-deep:#0d9488;
+    --accent-ink:#051414;
+    --gold:#f5c542;
+    --border:#23343b;
+    --radius:10px;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-wrap:pretty;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .stripe{height:6px;background:repeating-linear-gradient(-45deg,var(--accent) 0 16px,var(--bg) 16px 32px)}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,21,23,.88);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem;transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.02rem;
+    letter-spacing:.03em;text-transform:uppercase;
+    padding:12px 22px;border-radius:6px;border:1px solid transparent;
+    cursor:pointer;transition:.15s;min-height:44px;
+  }
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{background:var(--accent-deep)}
+  .btn-ghost{border-color:var(--border);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  .hero{
+    padding:104px 0 80px;
+    background:
+      radial-gradient(1000px 500px at 80% -10%, rgba(20,184,166,.14), transparent 60%),
+      radial-gradient(800px 400px at 10% 110%, rgba(245,197,66,.10), transparent 55%);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;font-size:.82rem;color:var(--gold);
+  }
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--gold)}
+  h1{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;margin:18px 0 20px;
+    text-transform:uppercase;letter-spacing:.01em;
+  }
+  h1 .accent{color:var(--accent)}
+  .hero p{color:var(--muted);font-size:1.13rem;max-width:54ch;margin-bottom:28px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .route-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:28px;position:relative;overflow:hidden;
+  }
+  .route-card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(300px 200px at 100% 0%, rgba(20,184,166,.12), transparent 60%);
+  }
+  .route-line{
+    display:flex;align-items:center;gap:14px;margin:10px 0 22px;position:relative;
+  }
+  .port{display:flex;flex-direction:column}
+  .port .code{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:.05em}
+  .port .name{color:var(--muted);font-size:.85rem}
+  .arrow{flex:1;height:2px;background:var(--border);position:relative}
+  .arrow::after{
+    content:"→";position:absolute;right:-2px;top:-14px;color:var(--accent);
+    font-size:1.3rem;font-weight:700;
+  }
+  .route-card ul{list-style:none}
+  .route-card li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);color:var(--muted);font-size:.95rem}
+  .route-card li:last-child{border-bottom:none}
+  .route-card li b{color:var(--ink)}
+  .route-card li .tick{color:var(--accent);font-weight:700}
+
+  section{padding:72px 0}
+  .sec-head{max-width:640px;margin-bottom:44px}
+  .sec-head h2{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;
+    text-transform:uppercase;letter-spacing:.01em;margin:10px 0 14px;
+  }
+  .sec-head p{color:var(--muted);font-size:1.05rem}
+
+  .grid{display:grid;gap:20px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px;transition:transform .15s,border-color .15s;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .card .icon{font-size:1.7rem;line-height:1;margin-bottom:14px}
+  .card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.97rem}
+
+  .cargo-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .tag{
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.03em;
+    text-transform:uppercase;font-size:.82rem;padding:7px 14px;border-radius:100px;
+    background:var(--surface-2);border:1px solid var(--border);color:var(--ink);
+  }
+  .tag:hover{border-color:var(--accent);color:var(--accent)}
+
+  .steps{list-style:none;counter-reset:step}
+  .steps li{
+    counter-increment:step;display:flex;gap:18px;padding:20px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .steps li:last-child{border-bottom:none}
+  .steps .num{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;
+    color:var(--accent);min-width:40px;line-height:1;
+  }
+  .steps .num::after{content:"."}
+  .steps h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+  .steps p{color:var(--muted);font-size:.95rem}
+
+  .quote{
+    background:
+      radial-gradient(700px 300px at 100% 0%, rgba(20,184,166,.14), transparent 55%),
+      var(--surface);
+    border:1px solid var(--border);border-radius:var(--radius);
+  }
+  .quote-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .quote h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;text-transform:uppercase;margin-bottom:14px}
+  .quote .left p{color:var(--muted);font-size:1.05rem;margin-bottom:22px}
+  .contact-row{display:flex;flex-direction:column;gap:12px}
+  .contact-row a{
+    display:flex;align-items:center;gap:12px;color:var(--ink);font-size:1.02rem;
+  }
+  .contact-row a:hover{color:var(--accent)}
+  .contact-row .lab{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+
+  form{display:flex;flex-direction:column;gap:14px}
+  form .field{display:flex;flex-direction:column;gap:6px}
+  label{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.82rem;color:var(--muted)}
+  input,select,textarea{
+    background:var(--bg);border:1px solid var(--border);border-radius:6px;
+    color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 14px;min-height:46px;
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+  textarea{resize:vertical;min-height:110px}
+  .form-note{color:var(--muted);font-size:.85rem}
+  .form-done{
+    display:none;background:rgba(20,184,166,.1);border:1px solid var(--accent);
+    border-radius:6px;padding:18px;color:var(--ink);font-size:.98rem;
+  }
+
+  footer{border-top:1px solid var(--border);padding:36px 0;margin-top:0}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-in .small{color:var(--muted);font-size:.85rem}
+  .foot-in .small a{color:var(--accent)}
+  .foot-in .small a:hover{text-decoration:underline}
+
+  @media(max-width:860px){
+    .hero .wrap,.quote-in{grid-template-columns:1fr}
+    .grid-3,.grid-2{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .hero{padding:64px 0 56px}
+    section{padding:48px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">Xaayow <span>Logistics</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#quote">Get a quote</a>
+    </div>
+    <a href="#quote" class="btn btn-primary">Request a quote</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Edmonton → Mogadishu · Sea Freight</span>
+      <h1>Cargo that fills the <span class="accent">return lane</span></h1>
+      <p>Xaayow Logistics ships household goods, vehicles, and business cargo from Edmonton, Canada to Mogadishu, Somalia — on the very same route our frankincense containers travel. One container, both directions.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn btn-primary">Get a quote</a>
+        <a href="#how" class="btn btn-ghost">How it works</a>
+      </div>
+    </div>
+    <div class="route-card">
+      <div class="route-line">
+        <div class="port"><span class="code">YEG</span><span class="name">Edmonton, Canada</span></div>
+        <div class="arrow"></div>
+        <div class="port"><span class="code">MGQ</span><span class="name">Mogadishu, Somalia</span></div>
+      </div>
+      <ul>
+        <li><span class="tick">✓</span><span><b>Shared (LCL)</b> or full-container (FCL) options</span></li>
+        <li><span class="tick">✓</span><span><b>Household goods</b> — furniture, appliances, boxes to family</span></li>
+        <li><span class="tick">✓</span><span><b>Vehicles &amp; machinery</b> — cars, parts, equipment</span></li>
+        <li><span class="tick">✓</span><span><b>Business cargo</b> — wholesale &amp; general merchandise</span></li>
+        <li><span class="tick">✓</span><span><b>Door-to-door</b> and port-to-port service</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we move</span>
+      <h2>Built for the Somali-Canadian community</h2>
+      <p>From a single box to a full container — we consolidate and ship it reliably to Mogadishu and beyond.</p>
+    </div>
+    <div class="cargo-tags">
+      <span class="tag">Household goods</span>
+      <span class="tag">Furniture &amp; appliances</span>
+      <span class="tag">Used vehicles &amp; parts</span>
+      <span class="tag">Machinery &amp; equipment</span>
+      <span class="tag">Construction materials</span>
+      <span class="tag">Food &amp; dry goods</span>
+      <span class="tag">Electronics</span>
+      <span class="tag">Wholesale cargo</span>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:36px">
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Shared container (LCL)</h3>
+        <p>Ship only the space you need. We consolidate multiple customers' cargo into one shared container — the most affordable way to send goods home.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚢</div>
+        <h3>Full container (FCL)</h3>
+        <p>For vehicles, large moves, and business inventory. Your own 20ft or 40ft container, secured end to end.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏠</div>
+        <h3>Door-to-door</h3>
+        <p>Pickup in Edmonton, sea freight to Somalia, customs clearance, and delivery in Mogadishu — all handled for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Simple &amp; transparent</span>
+      <h2>How it works</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="num"></span>
+        <div><h4>Tell us what you're sending</h4><p>What, how much, and its destination in Somalia. Household goods, a car, or a business order.</p></div>
+      </li>
+      <li>
+        <span class="num"></span>
+        <div><h4>We quote the freight</h4><p>A clear price for shared (LCL) or full-container (FCL) — with no surprise fees.</p></div>
+      </li>
+      <li>
+        <span class="num"></span>
+        <div><h4>We ship Edmonton → Mogadishu</h4><p>Pickup, sea freight, customs, and delivery — with tracking so you always know where your goods are.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="wrap">
+    <div class="quote">
+      <div class="wrap" style="padding:44px 48px">
+        <div class="quote-in">
+          <div class="left">
+            <h2>Get a quote</h2>
+            <p>Tell us what you're sending and we'll get back to you within one business day with a clear price.</p>
+            <div class="contact-row">
+              <div>
+                <div class="lab">Email</div>
+                <a href="mailto:info@jeyrob.com">info@jeyrob.com</a>
+              </div>
+              <div>
+                <div class="lab">Phone / WhatsApp</div>
+                <a href="tel:+17809539528">(780) 953-9528</a>
+              </div>
+            </div>
+          </div>
+          <form id="quoteForm">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" required placeholder="Full name">
+            </div>
+            <div class="field">
+              <label for="contact">Email or phone</label>
+              <input id="contact" name="contact" type="text" required placeholder="How can we reach you?">
+            </div>
+            <div class="field">
+              <label for="cargo">Cargo type</label>
+              <select id="cargo" name="cargo">
+                <option value="Household goods">Household goods</option>
+                <option value="Vehicle / parts">Vehicle / parts</option>
+                <option value="Machinery / equipment">Machinery / equipment</option>
+                <option value="Business / wholesale cargo">Business / wholesale cargo</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="details">What are you sending?</label>
+              <textarea id="details" name="details" required placeholder="Describe the goods, approximate size/weight, and destination in Somalia"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send request</button>
+            <div class="form-note">We'll reply with a quote within one business day. Barakallahu fiikum.</div>
+            <div class="form-done" id="formDone">Thank you! Your request has been noted. We'll contact you shortly with a quote.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="small">© 2026 Xaayow Logistics · A Jeyrob Distribution venture · Edmonton, Alberta, Canada</div>
+    <div class="small"><a href="https://jeyrob.com">jeyrob.com</a> · info@jeyrob.com · (780) 953-9528</div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const cargo = document.getElementById('cargo').value;
+    const details = document.getElementById('details').value.trim();
+    const subject = 'Xaayow Logistics quote: ' + cargo;
+    const body = 'Name: ' + name + '\nContact: ' + contact + '\nCargo: ' + cargo + '\n\nDetails:\n' + details;
+    // Opens the user's email client with a pre-filled message to info@jeyrob.com
+    window.location.href = 'mailto:info@jeyrob.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('formDone').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
